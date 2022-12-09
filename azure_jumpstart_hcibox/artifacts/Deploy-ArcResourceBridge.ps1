@@ -141,10 +141,11 @@ Invoke-Command -VMName $SDNConfig.HostList[0] -Credential $adcred -ScriptBlock {
     Move-Item -Path "C:\VHD\Ubuntu.vhdx" -Destination "$using:csv_path\VHD\Ubuntu.vhdx" -Force
 }
 
+$vnetName = $SDNConfig.AKSvSwitchName
+$vlan = $SDNConfig.AKSVlanID
 $ErrorActionPreference = "SilentlyContinue"
 Invoke-Command -VMName $SDNConfig.HostList[0] -Credential $adcred -ScriptBlock {
-    $vnetName="sdnSwitch"
-    az azurestackhci virtualnetwork create --subscription $using:subId --resource-group $using:rg --extended-location name="/subscriptions/$using:subId/resourceGroups/$using:rg/providers/Microsoft.ExtendedLocation/customLocations/$using:custom_location_name" type="CustomLocation" --location $using:location --network-type "Transparent" --name $vnetName
+    az azurestackhci virtualnetwork create --subscription $using:subId --resource-group $using:rg --extended-location name="/subscriptions/$using:subId/resourceGroups/$using:rg/providers/Microsoft.ExtendedLocation/customLocations/$using:custom_location_name" type="CustomLocation" --location $using:location --network-type "Transparent" --name $using:vnetName --vlan $using:vlan
     
     $galleryImageName = "ubuntu20"
     $galleryImageSourcePath="$using:csv_path\VHD\Ubuntu.vhdx"
