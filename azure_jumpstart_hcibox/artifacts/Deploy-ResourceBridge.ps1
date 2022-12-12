@@ -13,7 +13,7 @@ $Env:ToolsDir = "C:\Tools"
 $Env:tempDir = "C:\Temp"
 $Env:VMPath = "C:\VMs"
 
-Start-Transcript -Path $Env:HCIBoxLogsDir\Deploy-ArcResourceBridge.log
+Start-Transcript -Path $Env:HCIBoxLogsDir\Deploy-ResourceBridge.log
 
 # Import Configuration Module
 $ConfigurationDataFile = "$Env:HCIBoxDir\HCIBox-Config.psd1"

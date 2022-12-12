@@ -75,8 +75,8 @@ if (($env:registerCluster -eq $true) -and ($env:deployAKSHCI -eq $true)) {
 
 # Deploy Arc Resource Bridge
 if (($env:registerCluster -eq $true) -and ($env:deployResourceBridge -eq $true)) {
-    Write-Header "Deploying Arc Resource Bridge"
-    & "$Env:HCIBoxDir\Deploy-ArcResourceBridge.ps1"
+    Write-Header "Deploying Resource Bridge"
+    & "$Env:HCIBoxDir\Deploy-ResourceBridge.ps1"
 }
 
 # deploy Data services
